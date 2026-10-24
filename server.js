@@ -12,7 +12,6 @@ const Profile = require("./models/Profile");
 const practiceRoutes = require("./routes/practice");
 
 
-
 // Load database models before syncing
 require("./models/User");
 require("./models/Connection");
