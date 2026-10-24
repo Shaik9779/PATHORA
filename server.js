@@ -20,9 +20,10 @@ require("./models/Profile");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// Allow local development and deployed Vercel frontends
+// Allowed frontend origins
 const allowedOrigins = [
   "http://localhost:5173",
+  "https://pathora-n7cs.vercel.app",
   "https://pathora-joiu.vercel.app",
   "https://pathora-2psw.vercel.app",
   "https://pathora-2bps.vercel.app",
@@ -35,7 +36,7 @@ const corsOptions = {
       return callback(null, true);
     }
 
-    console.error(`❌ CORS blocked origin: ${origin}`);
+    console.error(`CORS blocked origin: ${origin}`);
     return callback(new Error(`CORS blocked origin: ${origin}`));
   },
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
@@ -64,16 +65,16 @@ app.use("/api/profile", profileRoutes);
 async function startServer() {
   try {
     await sequelize.authenticate();
-    console.log("✅ MySQL connected successfully!");
+    console.log("MySQL connected successfully!");
 
     await sequelize.sync();
-    console.log("✅ Database tables synchronized!");
+    console.log("Database tables synchronized!");
 
     app.listen(PORT, "0.0.0.0", () => {
-      console.log(`🚀 Pathora server running on port ${PORT}`);
+      console.log(`Pathora server running on port ${PORT}`);
     });
   } catch (error) {
-    console.error("❌ Startup failed:", error);
+    console.error("Startup failed:", error);
     process.exit(1);
   }
 }
