@@ -1,4 +1,4 @@
-
+```jsx
 import { useState } from "react";
 import "../App.css";
 
@@ -16,16 +16,22 @@ function Signup() {
     setLoading(true);
 
     try {
+      const API_URL = import.meta.env.VITE_API_URL;
+
+      if (!API_URL) {
+        throw new Error("Backend URL is not configured.");
+      }
+
       const response = await fetch(
-        "http://localhost:5000/api/auth/signup",
+        `${API_URL.replace(/\/+$/, "")}/api/auth/signup`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            name,
-            email,
+            name: name.trim(),
+            email: email.trim(),
             password,
           }),
         }
@@ -34,7 +40,7 @@ function Signup() {
       const data = await response.json();
 
       if (!response.ok) {
-        alert(data.message || "Signup failed.");
+        alert(data.message || "Signup failed. Please try again.");
         return;
       }
 
@@ -45,7 +51,12 @@ function Signup() {
       setPassword("");
     } catch (error) {
       console.error("Signup error:", error);
-      alert("Could not connect to Pathora's backend.");
+
+      alert(
+        error.message === "Backend URL is not configured."
+          ? "Backend URL is missing. Please check Vercel environment variables."
+          : "Could not connect to Pathora's backend. Please try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -124,3 +135,4 @@ function Signup() {
 }
 
 export default Signup;
+```
