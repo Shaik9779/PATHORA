@@ -2,7 +2,7 @@
 const express = require("express");
 const { Op } = require("sequelize");
 
-const User = require("../models/User");
+const User = require("../models/user");
 const Connection = require("../models/Connection");
 const authenticateToken = require("../routes/authMiddleware");
 
