@@ -26,15 +26,16 @@ const allowedOrigins = [
   "https://pathora-joiu.vercel.app",
   "https://pathora-2psw.vercel.app",
   "https://pathora-2bps.vercel.app",
+  "https://pathora-puce.vercel.app",
 ];
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow requests without an Origin header, such as health checks.
     if (!origin || allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
 
+    console.error(`❌ CORS blocked origin: ${origin}`);
     return callback(new Error(`CORS blocked origin: ${origin}`));
   },
   methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
