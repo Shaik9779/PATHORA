@@ -5,11 +5,12 @@ const express = require("express");
 const cors = require("cors");
 const sequelize = require("./config/database");
 const jobRoutes = require("./routes/jobs");
-
-
-const profileRoutes = require("./routes/Profile");
-const Profile = require("./models/Profile");
 const practiceRoutes = require("./routes/practice");
+
+const profileRoutes = require("./routes/profile");
+// const profileRoutes = require("./routes/Profile");
+const Profile = require("./models/Profile");
+
 
 
 // Load database models before syncing
