@@ -2,7 +2,11 @@
 import { useEffect, useMemo, useState } from "react";
 import "./Opportunities.css";
 
-const API_URL = "http://localhost:5000/api/jobs";
+const API_BASE = (
+  import.meta.env.VITE_API_URL || "https://pathora-1.onrender.com"
+).replace(/\/$/, "");
+
+const API_URL = `${API_BASE}/api/jobs`;
 
 const FILTERS = [
   { label: "All opportunities", value: "All" },
@@ -67,12 +71,14 @@ function normalizeSkills(skills) {
 }
 
 function getInitials(company = "") {
-  return company
-    .trim()
-    .split(/\s+/)
-    .slice(0, 2)
-    .map((word) => word[0]?.toUpperCase() || "")
-    .join("") || "CO";
+  return (
+    company
+      .trim()
+      .split(/\s+/)
+      .slice(0, 2)
+      .map((word) => word[0]?.toUpperCase() || "")
+      .join("") || "CO"
+  );
 }
 
 function formatSalary(job) {
@@ -178,7 +184,7 @@ export default function Opportunities() {
     readStorage("pathora_applications", [])
   );
 
-  // Fetch jobs from the Express API.
+  // Fetch jobs from the deployed Express API.
   useEffect(() => {
     const controller = new AbortController();
 
@@ -639,7 +645,9 @@ export default function Opportunities() {
 
                     <div className="opp-job-footer">
                       <span className="opp-demo-label">
-                        {applied ? "Application saved locally" : "From Pathora API"}
+                        {applied
+                          ? "Application saved locally"
+                          : "From Pathora API"}
                       </span>
 
                       <button onClick={() => openJobDetails(job)}>
@@ -876,7 +884,9 @@ export default function Opportunities() {
                 {selectedRequirements.length > 0 ? (
                   <ul>
                     {selectedRequirements.map((requirement, index) => (
-                      <li key={`${index}-${requirement}`}>{requirement}</li>
+                      <li key={`${index}-${requirement}`}>
+                        {requirement}
+                      </li>
                     ))}
                   </ul>
                 ) : (
