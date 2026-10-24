@@ -16,14 +16,8 @@ function Signup() {
     setLoading(true);
 
     try {
-      const API_URL = import.meta.env.VITE_API_URL;
-
-      if (!API_URL) {
-        throw new Error("Backend URL is not configured.");
-      }
-      
-        const response = await fetch(
-  "https://pathora-1.onrender.com/api/auth/signup",
+      const response = await fetch(
+        "https://pathora-1.onrender.com/api/auth/signup",
         {
           method: "POST",
           headers: {
@@ -31,7 +25,7 @@ function Signup() {
           },
           body: JSON.stringify({
             name: name.trim(),
-            email: email.trim(),
+            email: email.trim().toLowerCase(),
             password,
           }),
         }
@@ -53,9 +47,7 @@ function Signup() {
       console.error("Signup error:", error);
 
       alert(
-        error.message === "Backend URL is not configured."
-          ? "Backend URL is missing. Please check Vercel environment variables."
-          : "Could not connect to Pathora's backend. Please try again."
+        "Could not connect to Pathora's backend. Please try again."
       );
     } finally {
       setLoading(false);
@@ -126,7 +118,8 @@ function Signup() {
           </button>
 
           <p className="auth-switch">
-            Already have an account? <a href="/login">Sign in</a>
+            Already have an account?{" "}
+            <a href="/login">Sign in</a>
           </p>
         </form>
       </main>
