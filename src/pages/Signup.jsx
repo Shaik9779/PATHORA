@@ -21,9 +21,9 @@ function Signup() {
       if (!API_URL) {
         throw new Error("Backend URL is not configured.");
       }
-
-      const response = await fetch(
-        `${API_URL.replace(/\/+$/, "")}/api/auth/signup`,
+      
+        const response = await fetch(
+  "https://pathora-1.onrender.com/api/auth/signup",
         {
           method: "POST",
           headers: {
