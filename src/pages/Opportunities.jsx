@@ -2,7 +2,9 @@
 import { useEffect, useMemo, useState } from "react";
 import "./Opportunities.css";
 
-const API_URL = "http://localhost:5000/api/jobs";
+const API_URL = `${
+  import.meta.env.VITE_API_URL || "https://pathora-1.onrender.com"
+}/api/jobs`;
 
 const FILTERS = [
   { label: "All opportunities", value: "All" },
