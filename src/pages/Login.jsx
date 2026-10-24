@@ -23,7 +23,7 @@ function Login() {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/auth/login`,
+        "https://pathora-1.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {
