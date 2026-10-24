@@ -14,7 +14,9 @@ const Profile = require("./models/Profile");
 
 
 // Load database models before syncing
-require("./models/User");
+// require("./models/User");
+require("./models/user");
+//const User = require("../models/user");
 require("./models/Connection");
 
 // Import routes
