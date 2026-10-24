@@ -1,4 +1,4 @@
-```jsx
+
 import { useState } from "react";
 import "../App.css";
 
@@ -135,4 +135,3 @@ function Signup() {
 }
 
 export default Signup;
-```
