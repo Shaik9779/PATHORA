@@ -5,10 +5,11 @@ const express = require("express");
 const cors = require("cors");
 const sequelize = require("./config/database");
 const jobRoutes = require("./routes/jobs");
-const practiceRoutes = require("./routes/Practice");
+
 
 const profileRoutes = require("./routes/Profile");
 const Profile = require("./models/Profile");
+const practiceRoutes = require("./routes/practice");
 
 
 
