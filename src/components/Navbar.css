@@ -274,3 +274,61 @@
     font-size: 13px;
   }
 }
+/* PATHORA premium brand */
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  text-decoration: none;
+}
+
+.brand-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #7c5cff, #5435cf);
+  color: #ffffff;
+  font-size: 25px;
+  font-weight: 800;
+  line-height: 1;
+  box-shadow: 0 5px 14px rgba(108, 76, 230, 0.22);
+}
+
+.brand-name {
+  color: #201a3b;
+  font-size: 23px;
+  font-weight: 850;
+  letter-spacing: 1.5px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.navbar-brand:hover .brand-icon {
+  transform: translateY(-1px);
+}
+
+.navbar-brand .brand-icon {
+  transition: transform 0.2s ease;
+}
+
+@media (max-width: 480px) {
+  .navbar-brand {
+    gap: 7px;
+  }
+
+  .brand-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    font-size: 21px;
+  }
+
+  .brand-name {
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+}
